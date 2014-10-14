@@ -4,7 +4,7 @@ namespace Sinergi\BrowserSession\CacheDriver;
 use Predis\Client;
 use Sinergi\BrowserSession\CacheInterface;
 
-class Predis implements CacheDriverInterface, CacheInterface
+class PredisDriver implements CacheDriverInterface, CacheInterface
 {
     /**
      * @var Client

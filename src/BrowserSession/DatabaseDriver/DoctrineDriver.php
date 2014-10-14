@@ -11,7 +11,7 @@ class DoctrineDriver implements DatabaseDriverInterface
     /**
      * @var EntityManagerInterface
      */
-    private $entityManager;
+    protected $entityManager;
 
     /**
      * @param EntityManagerInterface $entityManager
