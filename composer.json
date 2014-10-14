@@ -1,0 +1,31 @@
+{
+    "name": "sinergi/browsersession",
+    "type": "library",
+    "description": "Portable and cacheable browser sessions",
+    "keywords": ["Browser", "Session"],
+    "homepage": "https://github.com/sinergi/browsersession",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Bull",
+            "email": "me@gabrielbull.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "doctrine/orm": "~2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sinergi\\BrowserSession\\": "src/BrowserSession"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sinergi\\BrowserSession\\Tests\\": ["tests/BrowserSession/Tests", "tests/BrowserSession/Tests/_includes"]
+        }
+    }
+}
