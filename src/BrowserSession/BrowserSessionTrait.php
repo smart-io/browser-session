@@ -1,12 +1,27 @@
 <?php
 namespace Sinergi\BrowserSession;
 
-trait BrowserSessionHelperTrait
+trait BrowserSessionTrait
 {
+    private $browserSessionController;
+
     /**
      * @return BrowserSessionController
      */
-    abstract function getBrowserSessionController();
+    protected function getBrowserSessionController()
+    {
+        return $this->browserSessionController;
+    }
+
+    /**
+     * @param BrowserSessionController $browserSessionController
+     * @return $this
+     */
+    protected function setBrowserSessionController(BrowserSessionController $browserSessionController)
+    {
+        $this->browserSessionController = $browserSessionController;
+        return $this;
+    }
 
     /**
      * @return null|BrowserSessionEntity
