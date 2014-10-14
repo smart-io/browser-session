@@ -1,5 +1,5 @@
 <?php
-namespace Sinergi\BrowserSession\RouterDriver;
+namespace Sinergi\BrowserSession\DatabaseDriver;
 
 use Exception;
 use Doctrine\ORM\EntityManagerInterface;

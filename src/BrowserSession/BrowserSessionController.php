@@ -2,7 +2,7 @@
 namespace Sinergi\BrowserSession;
 
 use Sinergi\BrowserSession\RouterDriver\RouterDriverInterface;
-use Sinergi\BrowserSession\RouterDriver\DatabaseDriverInterface;
+use Sinergi\BrowserSession\DatabaseDriver\DatabaseDriverInterface;
 use Sinergi\BrowserSession\CacheDriver\CacheDriverInterface;
 
 class BrowserSessionController
