@@ -15,7 +15,9 @@ trait BrowserSessionTrait
             if (isset($container['browserSessionController'])) {
                 $browserSessionController = $container['browserSessionController'];
             }
-        } elseif (method_exists($this, 'getBrowserSessionController')) {
+        }
+
+        if (null === $browserSessionController && method_exists($this, 'getBrowserSessionController')) {
             $browserSessionController = call_user_func([$this, 'getBrowserSessionController']);
         }
 
