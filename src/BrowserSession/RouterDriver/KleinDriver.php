@@ -2,6 +2,7 @@
 namespace Sinergi\BrowserSession\RouterDriver;
 
 use Klein\Klein;
+use Klein\ResponseCookie;
 use Sinergi\BrowserSession\Cookie;
 
 class KleinDriver implements RouterDriverInterface
@@ -49,14 +50,19 @@ class KleinDriver implements RouterDriverInterface
      */
     public function addCookie(Cookie $cookie)
     {
-        $this->klein->response()->cookie(
+        $kleinCookie = new ResponseCookie(
             $cookie->getName(),
             $cookie->getValue(),
-            $cookie->getExpiration()->format('Y-m-d H:i:s'),
+            $cookie->getExpiration(),
             $cookie->getPath(),
             $cookie->getDomain(),
             $cookie->isSecure(),
             $cookie->isHttpOnly()
+        );
+
+        $this->klein->response()->cookies()->set(
+            $cookie->getName(),
+            $kleinCookie
         );
     }
 }
