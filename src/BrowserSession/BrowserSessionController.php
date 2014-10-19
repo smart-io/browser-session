@@ -197,7 +197,7 @@ class BrowserSessionController
             return $this->browserSessionRepository;
         }
 
-        return $this->browserSessionCache = $this->databaseDriver->getRepository();
+        return $this->browserSessionRepository = $this->databaseDriver->getRepository();
     }
 
     /**
@@ -240,10 +240,10 @@ class BrowserSessionController
 
         $token = $this->getCookie();
         if ($token) {
-            if ($this->getBrowserSessionCache()->exists($token)) {
-                $session = $this->getBrowserSessionCache()->fetch($token);
+            if ($this->getBrowserSessionCache()->exists($token->getValue())) {
+                $session = $this->getBrowserSessionCache()->fetch($token->getValue());
             } else {
-                $session = $this->getBrowserSessionRepository()->findOneBy(['token' => $token]);
+                $session = $this->getBrowserSessionRepository()->findOneBy(['token' => $token->getValue()]);
             }
             return $this->session = $session;
         }
