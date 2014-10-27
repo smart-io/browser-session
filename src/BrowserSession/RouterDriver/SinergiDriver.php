@@ -1,6 +1,8 @@
 <?php
 namespace Sinergi\BrowserSession\RouterDriver;
 
+use Router\Request;
+use Router\Response;
 use Router\ResponseCookie;
 use Router\Router;
 use Sinergi\BrowserSession\Cookie;
@@ -13,11 +15,25 @@ class SinergiDriver implements RouterDriverInterface
     private $router;
 
     /**
-     * @param Router $router
+     * @var Request
      */
-    public function __construct(Router $router)
+    private $request;
+
+    /**
+     * @var Response
+     */
+    private $response;
+
+    /**
+     * @param Router $router
+     * @param Request $request
+     * @param Response $response
+     */
+    public function __construct(Router $router, Request $request, Response $response)
     {
         $this->router = $router;
+        $this->request = $request;
+        $this->response = $response;
     }
 
     /**
@@ -26,7 +42,7 @@ class SinergiDriver implements RouterDriverInterface
      */
     public function cookieExists($key)
     {
-        return $this->router->getRequest()->cookies()->exists($key);
+        return $this->request->cookies()->exists($key);
     }
 
     /**
@@ -35,7 +51,7 @@ class SinergiDriver implements RouterDriverInterface
      */
     public function getCookie($key)
     {
-        if ($cookieValue = $this->router->getRequest()->cookies()->get($key)) {
+        if ($cookieValue = $this->request->cookies()->get($key)) {
             $cookie = new Cookie();
             $cookie->setName($key);
             $cookie->setValue($cookieValue);
@@ -60,7 +76,7 @@ class SinergiDriver implements RouterDriverInterface
             $cookie->isHttpOnly()
         );
 
-        $this->router->getResponse()->cookies()->set(
+        $this->response->cookies()->set(
             $cookie->getName(),
             $cookie
         );
