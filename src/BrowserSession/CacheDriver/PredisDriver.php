@@ -1,8 +1,8 @@
 <?php
-namespace Sinergi\BrowserSession\CacheDriver;
+namespace Smart\BrowserSession\CacheDriver;
 
 use Predis\Client;
-use Sinergi\BrowserSession\CacheInterface;
+use Smart\BrowserSession\CacheInterface;
 
 class PredisDriver implements CacheDriverInterface, CacheInterface
 {

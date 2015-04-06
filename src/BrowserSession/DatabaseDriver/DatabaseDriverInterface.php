@@ -1,9 +1,9 @@
 <?php
-namespace Sinergi\BrowserSession\DatabaseDriver;
+namespace Smart\BrowserSession\DatabaseDriver;
 
-use Sinergi\BrowserSession\BrowserSessionEntity;
+use Smart\BrowserSession\BrowserSessionEntity;
 use Doctrine\ORM\EntityManagerInterface;
-use Sinergi\BrowserSession\BrowserSessionRepository;
+use Smart\BrowserSession\BrowserSessionRepository;
 
 interface DatabaseDriverInterface
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Sinergi\BrowserSession\CacheDriver;
+namespace Smart\BrowserSession\CacheDriver;
 
 interface CacheDriverInterface
 {

@@ -28,12 +28,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Sinergi\\BrowserSession\\": "src/BrowserSession"
+      "Smart\\BrowserSession\\": "src/BrowserSession"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Sinergi\\BrowserSession\\Tests\\": [
+      "Smart\\BrowserSession\\Tests\\": [
         "tests/BrowserSession/Tests",
         "tests/BrowserSession/Tests/_includes"
       ]

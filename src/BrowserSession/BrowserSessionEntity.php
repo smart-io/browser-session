@@ -1,17 +1,17 @@
 <?php
-namespace Sinergi\BrowserSession;
+namespace Smart\BrowserSession;
 
 use DateTime;
 use DateInterval;
 use Sinergi\Token\StringGenerator;
-use Sinergi\BrowserSession\Variable\VariableEntity;
+use Smart\BrowserSession\Variable\VariableEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\PersistentCollection;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * @ORM\Entity(repositoryClass="Sinergi\BrowserSession\BrowserSessionRepository")
+ * @ORM\Entity(repositoryClass="Smart\BrowserSession\BrowserSessionRepository")
  * @ORM\Table(
  *   name="browser_session",
  *   uniqueConstraints={@ORM\UniqueConstraint(name="token_index", columns={"token"})}
@@ -34,12 +34,12 @@ class BrowserSessionEntity
 
     /**
      * @ORM\OneToMany(
-     *   targetEntity="Sinergi\BrowserSession\Variable\VariableEntity",
+     *   targetEntity="Smart\BrowserSession\Variable\VariableEntity",
      *   mappedBy="browserSession",
      *   cascade={"persist", "merge", "detach"},
      *   indexBy="key"
      * )
-     * @Serializer\Type("ArrayCollection<Sinergi\BrowserSession\Variable\VariableEntity>")
+     * @Serializer\Type("ArrayCollection<Smart\BrowserSession\Variable\VariableEntity>")
      * @var VariableEntity[]|ArrayCollection|PersistentCollection
      **/
     private $variables;

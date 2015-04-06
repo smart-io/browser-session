@@ -1,5 +1,5 @@
 <?php
-namespace Sinergi\BrowserSession;
+namespace Smart\BrowserSession;
 
 use DateTime;
 use Serializable;

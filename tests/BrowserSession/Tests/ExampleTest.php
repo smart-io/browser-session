@@ -1,5 +1,5 @@
 <?php
-namespace Sinergi\BrowserSession\Tests;
+namespace Smart\BrowserSession\Tests;
 
 use PHPUnit_Framework_TestCase;
 

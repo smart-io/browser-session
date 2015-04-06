@@ -1,7 +1,7 @@
 <?php
-namespace Sinergi\BrowserSession\Variable;
+namespace Smart\BrowserSession\Variable;
 
-use Sinergi\BrowserSession\BrowserSessionEntity;
+use Smart\BrowserSession\BrowserSessionEntity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\SerializerBuilder;
@@ -28,7 +28,7 @@ class VariableEntity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Sinergi\BrowserSession\BrowserSessionEntity", inversedBy="variables")
+     * @ORM\ManyToOne(targetEntity="Smart\BrowserSession\BrowserSessionEntity", inversedBy="variables")
      * @ORM\JoinColumn(name="browser_session_id", referencedColumnName="id", onDelete="CASCADE")
      * @var BrowserSessionEntity
      */

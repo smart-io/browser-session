@@ -1,9 +1,9 @@
 <?php
-namespace Sinergi\BrowserSession;
+namespace Smart\BrowserSession;
 
-use Sinergi\BrowserSession\RouterDriver\RouterDriverInterface;
-use Sinergi\BrowserSession\DatabaseDriver\DatabaseDriverInterface;
-use Sinergi\BrowserSession\CacheDriver\CacheDriverInterface;
+use Smart\BrowserSession\RouterDriver\RouterDriverInterface;
+use Smart\BrowserSession\DatabaseDriver\DatabaseDriverInterface;
+use Smart\BrowserSession\CacheDriver\CacheDriverInterface;
 
 class BrowserSessionController
 {

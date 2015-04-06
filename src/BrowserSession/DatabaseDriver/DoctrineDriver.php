@@ -1,10 +1,10 @@
 <?php
-namespace Sinergi\BrowserSession\DatabaseDriver;
+namespace Smart\BrowserSession\DatabaseDriver;
 
 use Exception;
 use Doctrine\ORM\EntityManagerInterface;
-use Sinergi\BrowserSession\BrowserSessionEntity;
-use Sinergi\BrowserSession\BrowserSessionRepository;
+use Smart\BrowserSession\BrowserSessionEntity;
+use Smart\BrowserSession\BrowserSessionRepository;
 
 class DoctrineDriver implements DatabaseDriverInterface
 {
@@ -46,7 +46,7 @@ class DoctrineDriver implements DatabaseDriverInterface
     public function getRepository()
     {
         return $this->getEntityManager()->getRepository(
-            "Sinergi\\BrowserSession\\BrowserSessionEntity"
+            "Smart\\BrowserSession\\BrowserSessionEntity"
         );
     }
 

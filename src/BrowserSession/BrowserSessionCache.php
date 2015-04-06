@@ -1,12 +1,12 @@
 <?php
-namespace Sinergi\BrowserSession;
+namespace Smart\BrowserSession;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
 // todo: cache expiration
 class BrowserSessionCache extends AbstractCacheable implements CacheableEventsInterface
 {
-    const CACHE_KEY = 'Sinergi\\BrowserSession\\BrowserSessionEntity.';
+    const CACHE_KEY = 'Smart\\BrowserSession\\BrowserSessionEntity.';
 
     /**
      * @return string
@@ -21,7 +21,7 @@ class BrowserSessionCache extends AbstractCacheable implements CacheableEventsIn
      */
     public function getType()
     {
-        return 'Sinergi\\BrowserSession\\BrowserSessionEntity';
+        return 'Smart\\BrowserSession\\BrowserSessionEntity';
     }
 
     /**

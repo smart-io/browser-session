@@ -1,7 +1,7 @@
 <?php
-namespace Sinergi\BrowserSession\RouterDriver;
+namespace Smart\BrowserSession\RouterDriver;
 
-use Sinergi\BrowserSession\Cookie;
+use Smart\BrowserSession\Cookie;
 
 interface RouterDriverInterface
 {

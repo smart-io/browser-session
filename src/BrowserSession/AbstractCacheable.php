@@ -1,8 +1,8 @@
 <?php
-namespace Sinergi\BrowserSession;
+namespace Smart\BrowserSession;
 
 use JMS\Serializer\SerializerBuilder;
-use Sinergi\BrowserSession\CacheDriver\CacheDriverInterface;
+use Smart\BrowserSession\CacheDriver\CacheDriverInterface;
 
 abstract class AbstractCacheable implements CacheableInterface
 {

@@ -1,9 +1,9 @@
 <?php
-namespace Sinergi\BrowserSession\RouterDriver;
+namespace Smart\BrowserSession\RouterDriver;
 
 use Klein\Klein;
 use Klein\ResponseCookie;
-use Sinergi\BrowserSession\Cookie;
+use Smart\BrowserSession\Cookie;
 
 class KleinDriver implements RouterDriverInterface
 {

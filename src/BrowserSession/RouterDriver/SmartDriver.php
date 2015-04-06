@@ -1,13 +1,13 @@
 <?php
-namespace Sinergi\BrowserSession\RouterDriver;
+namespace Smart\BrowserSession\RouterDriver;
 
 use Router\Request;
 use Router\Response;
 use Router\ResponseCookie;
 use Router\Router;
-use Sinergi\BrowserSession\Cookie;
+use Smart\BrowserSession\Cookie;
 
-class SinergiDriver implements RouterDriverInterface
+class SmartDriver implements RouterDriverInterface
 {
     /**
      * @var Router
@@ -25,12 +25,15 @@ class SinergiDriver implements RouterDriverInterface
     private $response;
 
     /**
-     * @param Router $router
-     * @param Request $request
+     * @param Router   $router
+     * @param Request  $request
      * @param Response $response
      */
-    public function __construct(Router $router, Request $request, Response $response)
-    {
+    public function __construct(
+        Router $router,
+        Request $request,
+        Response $response
+    ) {
         $this->router = $router;
         $this->request = $request;
         $this->response = $response;
@@ -38,6 +41,7 @@ class SinergiDriver implements RouterDriverInterface
 
     /**
      * @param $key
+     *
      * @return boolean
      */
     public function cookieExists($key)
@@ -47,6 +51,7 @@ class SinergiDriver implements RouterDriverInterface
 
     /**
      * @param $key
+     *
      * @return Cookie
      */
     public function getCookie($key)
@@ -55,13 +60,16 @@ class SinergiDriver implements RouterDriverInterface
             $cookie = new Cookie();
             $cookie->setName($key);
             $cookie->setValue($cookieValue);
+
             return $cookie;
         }
+
         return null;
     }
 
     /**
      * @param Cookie $cookie
+     *
      * @return mixed
      */
     public function addCookie(Cookie $cookie)
