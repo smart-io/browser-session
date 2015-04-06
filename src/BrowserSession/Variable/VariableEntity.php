@@ -11,8 +11,8 @@ use JMS\Serializer\SerializerBuilder;
  * @ORM\Table(
  *   name="browser_session_variable",
  *   indexes={
- *     @ORM\index(name="browser_session_id_and_key_index", columns={"browser_session_id", "key"}),
- *     @ORM\index(name="key_index", columns={"key"})
+ *     @ORM\Index(name="browser_session_id_and_key_index", columns={"browser_session_id", "key"}),
+ *     @ORM\Index(name="key_index", columns={"key"})
  *   }
  * )
  */
@@ -78,11 +78,13 @@ class VariableEntity
 
     /**
      * @param BrowserSessionEntity $browserSession
+     *
      * @return $this
      */
     public function setBrowserSession(BrowserSessionEntity $browserSession)
     {
         $this->browserSession = $browserSession;
+
         return $this;
     }
 
@@ -96,11 +98,13 @@ class VariableEntity
 
     /**
      * @param int $id
+     *
      * @return $this
      */
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -114,11 +118,13 @@ class VariableEntity
 
     /**
      * @param string $key
+     *
      * @return $this
      */
     public function setKey($key)
     {
         $this->key = $key;
+
         return $this;
     }
 
@@ -132,11 +138,13 @@ class VariableEntity
 
     /**
      * @param boolean $isSerialized
+     *
      * @return $this
      */
     public function setIsSerialized($isSerialized)
     {
         $this->isSerialized = $isSerialized;
+
         return $this;
     }
 
@@ -150,11 +158,13 @@ class VariableEntity
 
     /**
      * @param string $serializedType
+     *
      * @return $this
      */
     public function setSerializedType($serializedType)
     {
         $this->serializedType = $serializedType;
+
         return $this;
     }
 
@@ -168,11 +178,13 @@ class VariableEntity
         } elseif ($this->isSerialized) {
             return $this->unserializeValue($this->value);
         }
+
         return $this->value;
     }
 
     /**
      * @param mixed $value
+     *
      * @return $this
      */
     public function setValue($value)
@@ -182,11 +194,13 @@ class VariableEntity
             $this->serializeValue($value);
         }
         $this->value = $value;
+
         return $this;
     }
 
     /**
      * @param mixed $value
+     *
      * @return string
      */
     private function serializeValue($value)
@@ -198,16 +212,19 @@ class VariableEntity
         } else {
             $this->setSerializedType(gettype($value));
         }
+
         return $serializer->serialize($value, 'json');
     }
 
     /**
      * @param string $value
+     *
      * @return mixed
      */
     private function unserializeValue($value)
     {
         $serializer = SerializerBuilder::create()->build();
+
         return $serializer->deserialize(
             $value,
             $this->getSerializedType(),
