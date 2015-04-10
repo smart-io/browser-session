@@ -1,6 +1,8 @@
 <?php
 namespace Smart\BrowserSession;
 
+use Smart\BrowserSession\Variable\VariableEntity;
+
 trait BrowserSessionTrait
 {
     /**
@@ -13,12 +15,18 @@ trait BrowserSessionTrait
         if (method_exists($this, 'getContainer')) {
             $container = call_user_func([$this, 'getContainer']);
             if (isset($container['browserSessionController'])) {
-                $browserSessionController = $container['browserSessionController'];
+                $browserSessionController
+                    = $container['browserSessionController'];
             }
         }
 
-        if (null === $browserSessionController && method_exists($this, 'getBrowserSessionController')) {
-            $browserSessionController = call_user_func([$this, 'getBrowserSessionController']);
+        if (null === $browserSessionController
+            && method_exists($this, 'getBrowserSessionController')
+        ) {
+            $browserSessionController = call_user_func([
+                $this,
+                'getBrowserSessionController'
+            ]);
         }
 
         if ($browserSessionController instanceof BrowserSessionController) {
@@ -40,6 +48,7 @@ trait BrowserSessionTrait
             $browserSessionController->flagSessionForUpdate($session);
         }
         $browserSessionController->saveCookie($session);
+
         return $session;
     }
 
@@ -55,5 +64,30 @@ trait BrowserSessionTrait
         $browserSessionController = $this->tryGetBrowserSessionController();
         $session = $this->getBrowserSession();
         $browserSessionController->flagSessionForUpdate($session);
+    }
+
+    /**
+     * @param string|integer $key
+     * @param mixed          $value
+     */
+    protected function setSessionVariableValue($key, $value)
+    {
+
+        $this->getBrowserSession()->getVariables()->set($key,
+            (new VariableEntity())->setKey($key)->setValue($value)
+        );
+    }
+
+    /**
+     * @param string|integer $key
+     *
+     * @return mixed
+     */
+    protected function getSessionVariableValue($key)
+    {
+
+        $variable = $this->getBrowserSession()->getVariables()->get($key);
+
+        return $variable === null ? null : $variable->getValue();
     }
 }
