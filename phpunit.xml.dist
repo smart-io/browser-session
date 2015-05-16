@@ -8,7 +8,7 @@
          stopOnFailure="false"
          syntaxCheck="false">
     <testsuites>
-        <testsuite name="Smart BrowserSession Test Suite">
+        <testsuite name="Smart Browser Session Test Suite">
             <directory>./tests/BrowserSession/</directory>
         </testsuite>
     </testsuites>

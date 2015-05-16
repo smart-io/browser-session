@@ -1,12 +1,12 @@
 {
-  "name": "smart/browsersession",
+  "name": "smart/browser-session",
   "type": "library",
   "description": "Portable and cacheable browser sessions",
   "keywords": [
     "Browser",
     "Session"
   ],
-  "homepage": "https://github.com/smart-io/browsersession",
+  "homepage": "https://github.com/smart-io/browser-session",
   "license": "MIT",
   "authors": [
     {
