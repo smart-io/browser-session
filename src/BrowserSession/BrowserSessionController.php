@@ -257,12 +257,12 @@ class BrowserSessionController
     public function updateSession(BrowserSessionEntity $browserSession)
     {
         $browserSession->generateExpirationDate();
-        $this->getBrowserSessionCache()->store($browserSession->getToken(), $browserSession);
         if ($this->getDatabaseDriver()->isBackgroundDriver()) {
             $this->getDatabaseDriver()->mergeOrPersistBackground($browserSession);
         } else {
             $this->getDatabaseDriver()->mergeOrPersist($browserSession);
         }
+        $this->getBrowserSessionCache()->store($browserSession->getToken(), $browserSession);
         $this->saveCookie($browserSession);
     }
 

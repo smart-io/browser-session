@@ -72,7 +72,11 @@ class DoctrineDriver implements DatabaseDriverInterface
      */
     public function mergeOrPersist(BrowserSessionEntity $browserSession)
     {
-        $this->getEntityManager()->persist($browserSession);
+        if (!$browserSession->getId()) {
+            $this->getEntityManager()->persist($browserSession);
+        } else {
+            $this->getEntityManager()->merge($browserSession);
+        }
         $this->getEntityManager()->flush();
     }
 }
