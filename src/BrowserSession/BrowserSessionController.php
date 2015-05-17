@@ -48,16 +48,23 @@ class BrowserSessionController
     protected $browserSessionRepository;
 
     /**
+     * @var boolean
+     */
+    protected $isUpdateDeferred;
+
+    /**
      * @param DatabaseDriverInterface $databaseDriver
      * @param RouterDriverInterface $routerDriver
      * @param CacheDriverInterface $cacheDriver
      * @param Config $config
+     * @param boolean $isUpdateDeferred
      */
     public function __construct(
         DatabaseDriverInterface $databaseDriver = null,
         RouterDriverInterface $routerDriver = null,
         CacheDriverInterface $cacheDriver = null,
-        Config $config = null
+        Config $config = null,
+        $isUpdateDeferred = false
     )
     {
         if (null !== $databaseDriver) {
@@ -72,6 +79,8 @@ class BrowserSessionController
         if (null !== $config) {
             $this->config = $config;
         }
+        // todo, not yet implemented
+        $this->isUpdateDeferred = $isUpdateDeferred;
     }
 
     public function __destruct()
