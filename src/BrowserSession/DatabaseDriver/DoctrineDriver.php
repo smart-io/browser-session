@@ -23,11 +23,13 @@ class DoctrineDriver implements DatabaseDriverInterface
 
     /**
      * @param EntityManagerInterface $entityManager
+     *
      * @return $this
      */
     public function setEntityManager(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
+
         return $this;
     }
 
@@ -60,10 +62,12 @@ class DoctrineDriver implements DatabaseDriverInterface
 
     /**
      * @param BrowserSessionEntity $browserSession
+     *
      * @return void
      */
-    public function mergeOrPersistBackground(BrowserSessionEntity $browserSession)
-    {
+    public function mergeOrPersistBackground(
+        BrowserSessionEntity $browserSession
+    ) {
         return null;
     }
 
@@ -75,8 +79,13 @@ class DoctrineDriver implements DatabaseDriverInterface
         if (!$browserSession->getId()) {
             $this->getEntityManager()->persist($browserSession);
         } else {
-            $this->getEntityManager()->merge($browserSession);
+            try {
+                $this->getEntityManager()->merge($browserSession);
+            } catch (Exception $e) {
+                $this->getEntityManager()->persist($browserSession);
+            }
         }
+
         $this->getEntityManager()->flush();
     }
 }
