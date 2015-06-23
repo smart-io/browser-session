@@ -81,7 +81,6 @@ class DoctrineDriver implements DatabaseDriverInterface
             $this->persist($browserSession);
         } else {
             $this->merge($browserSession);
-            $this->getEntityManager()->flush();
         }
     }
 
@@ -109,6 +108,7 @@ class DoctrineDriver implements DatabaseDriverInterface
 
         try {
             $this->getEntityManager()->merge($browserSession);
+            $this->getEntityManager()->flush();
         } catch (Exception $e) {
             $this->persist($browserSession);
         }
